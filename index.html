@@ -2,21 +2,22 @@
 <html lang="en">
   <head>
     <title>MelodyMente</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="commonStyle.css"/>
+    <link rel="stylesheet" href="homeStyle.css" />
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   </head>
   <body>
     <header>
       <p class="mmButton">MelodyMente</p>
-      <p class="button homeButton">Home</p>
-      <p class="button aboutButton">About</p>
-      <p class="button helpButton">Help</p>
-      <p class="button canvasButton">Canvas</p>
+      <a class="button homeButton" href="/">Home</a>
+      <a class="button aboutButton" href="about">About</a>
+      <a class="button helpButton" href="help">Help</a>
+      <a class="button canvasButton" href="https://accounts.google.com/o/saml2/initsso?idpid=C016f5lp7&spid=283512448558&forceauthn=false&from_login=1&as=lr4Gnoo2ITDF_eMqmUixBWLp18ALswoCbl6DPLnX7KM&pli=1&authuser=2">Canvas</a>
     </header>
 
     <h1 class="headerText">MelodyMente</h1>
     <div class="searchComponent">
-      <input type="text" placeholder="SampleSong by SampleArtist" id="song" class="searchBar"/>
+      <input type="text" placeholder="SampleSong by SampleArtist" id="song" class="searchBar"  onkeypress="inputPress(event)"/>
       <button type="button" class="searchButton" onclick="onClick()">Go!</button>
     </div>
 

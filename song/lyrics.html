@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MelodyMente</title>
+    <link rel="stylesheet" href="../commonStyle.css"/>
+    <link rel="stylesheet" href="songStyle.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+  </head>
+  <body>
+    <header>
+      <p class="mmButton">MelodyMente</p>
+      <a class="button homeButton" href="../">Home</a>
+      <a class="button aboutButton" href="../about">About</a>
+      <a class="button helpButton" href="../help">Help</a>
+      <a class="button canvasButton" href="https://accounts.google.com/o/saml2/initsso?idpid=C016f5lp7&spid=283512448558&forceauthn=false&from_login=1&as=lr4Gnoo2ITDF_eMqmUixBWLp18ALswoCbl6DPLnX7KM&pli=1&authuser=2">Canvas</a>
+    </header>
+
+    <div class="songHeading">
+      <img id="songImage" alt="Song Image">
+      <div class="songTexts">
+        <h1 id="songText">"Song Title"</h1>
+        <h1 class="songSubText">Artist</h1>
+        <h1 class="songSubText">- words</h1>
+      </div>
+    </div>
+
+    <div class="lyricsBox">
+      <p id="lyrics"></p>
+      <div class="quizBox">
+        <p class="quizSubText" id="quiz">Song Quiz Options</p>
+
+        <label class="quizSubText">Fill In Blank Prevalence:</label>
+        <select class="selectionOption" id="blanks">
+          <option value="none">None</option>
+          <option value="low">Rare</option>
+          <option selected value="moderate">Moderate</option>
+          <option value="increased">Increased</option>
+        </select>
+
+        <label class="quizSubText">Vocabulary Prevalence:</label>
+        <select class="selectionOption" id="blanks">
+          <option value="none">None</option>
+          <option value="low">Rare</option>
+          <option selected value="moderate">Moderate</option>
+          <option value="increased">Increased</option>
+        </select>
+
+        <label class="quizSubText">Vocabulary Blacklist:</label>
+        <select class="selectionOption" id="blanks">
+          <option value="none">None</option>
+          <option value="art">Articles</option>
+          <option value="prn">Pronouns</option>
+          <option selected value="artprn">Art + Prn</option>
+        </select>
+
+        <button type="button" class="startButton" onclick="onClick()">Start!</button>
+      </div>
+      
+    </div>
+
+    <footer>
+      <p class="footerText">Created by Kush Patel</p>
+      <p class="footerLicense">This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+    </footer>
+
+    <script src="song.js"></script>
+  </body>
+</html>

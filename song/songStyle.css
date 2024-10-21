@@ -1,0 +1,109 @@
+body {
+}
+
+.songHeading {
+    margin: 10vh 0 0 10.75vw;
+}
+#songImage {
+    position: absolute;
+
+    width: 17.5%;
+    border: .25vw solid #05204bd1;
+
+    padding: .5vw;
+}
+
+.songTexts {
+    margin-left: 24vw;
+}
+#songText {
+    margin-bottom: 1vh;
+    font: normal 3vw lacosta;
+    color: #05204b;
+}
+.songSubText {
+    margin: -.7vh 0px 0px 1vw;
+
+    font: normal 2vw allema;
+    color: #05204b;
+}
+
+.lyricsBox {
+    display: flex;
+
+    margin: 25vh 10vw;
+}
+#lyrics {
+    width: 50%;
+
+    font: normal 1.5vw "Times New Roman";
+    color: #05204b;
+}
+
+.quizBox {
+    margin: 2vw 2vw 2vw 10vw;
+    width: 50%;
+    height: 75vh;
+    border: thick double #05204b;
+    padding: 1.75vh;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: flex-start;
+}
+#quiz {
+    flex-basis: 100%;
+
+    margin-bottom: 1vh;
+    font: normal 2vw allema;
+    text-decoration: underline;
+    color: #05204b;
+}
+.quizSubText {
+    margin: 1.25vh 0.5vw;
+
+    font: normal 1.5vw "Times New Roman";
+    color: #05204b;
+
+}
+
+.selectionOption {
+    width: 20%;
+    margin: 0px 0.5vw;
+    padding: 0.25vw;
+    letter-spacing: 0.1vw;
+
+    text-align: center;
+    font: normal 1vw allema;
+    color: #ffffff;
+
+    border: 1px solid #05204b;
+    background-color: #05204b;
+
+    transition: all 0.4s ease 0s;
+}
+.selectionOption:hover {
+    color: #ffffffd1;
+    background-color: #05204bd1;
+    border: .2vh inset #05204b;
+}
+
+.startButton {
+    width: 100%;
+    margin-top: 1vh;
+    font: normal 1.9vw lacosta;
+    color: #ffffff;
+    bottom: 0;
+
+    border: 1px solid #05204b;
+    background-color: #05204b;
+    
+    transition: all 0.4s ease 0s;
+}
+.startButton:hover {
+    color: #ffffffd1;
+    background-color: #05204bd1;
+    border: .2vh inset #05204b;
+}

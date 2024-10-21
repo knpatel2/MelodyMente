@@ -1,66 +1,88 @@
-//header.set("Access-Control-Allow-Origin", "*");
-//header.set("Access-Control-Allow-Methods", "GET,POST,PATCH,OPTIONS");
-//header.set("Access-Control-Allow-Headers", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Content-Type, Accept, X-Auth-Token, Authorization")
+//remove song input and set placeholder to error to output to user
+function setPlaceHolder(status = "No song found!") {
+    document.getElementById('song').readOnly = false;
+    clicked = false;
 
-async function getLyrics(id) {
-    let url = new URL("https://api.genius.com" + id);
-    url.searchParams.append("access_token", "svCg6m__bjIyFMbYGl3US5Ofw0j7zNFx6f00KNhreXTLtq_-zSjTTmcsOw2uM58U");
+    document.getElementById("song").value = "";
+    document.getElementById("song").placeholder = "Error: " + status;
 
-    let request = await fetch(new Request(url, {
-        method: "GET",
-    }));
-    if (!request.ok) {
-        return;
-    }
-    request = await request.json();
-    
-    console.log(url);
-    console.log(request.response);
-
-    url = new URL("https://genius.com" + request.response.song.path);
-    request = await fetch(new Request(url, {
-        method: "GET",
-        headers: new Headers({}).set("Access-Control-Allow-Origin", "http://127.0.0.1:5500")
-    })).then(response => response.text()).then(html => {
-        const parser = new DOMParser()
-        const doc = parser.parseFromString(html, "text/html")
-
-        // You can now even select part of that html as you would in the regular DOM
-        // Example:
-        // const docArticle = doc.querySelector('article').innerHTML
-
-        console.log(url);
-        console.log(doc);
-        return true;
-    })
-    .catch(error => {
-       console.error('Failed to fetch page: ', error)
-    })    
+    //timeout to restore placeholder back to normal
+    setTimeout(() => {
+        document.getElementById("song").placeholder = "SampleSong by SampleArtist";
+    }, 2000);
 }
 
-async function getSongURL(songName) {
-    const params = {
-        "access_token": "svCg6m__bjIyFMbYGl3US5Ofw0j7zNFx6f00KNhreXTLtq_-zSjTTmcsOw2uM58U",
-        "q": songName
-    };
-    
-    let url = new URL("https://api.genius.com/search");
-    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+async function getSongDetails(songName, _callback) {
+    //add song name at end of lyrist request,
+    //uri encoding for compatibility
+    //(eg space => %20)
+    let url = encodeURI("https://lyrist.vercel.app/api/" + songName);
 
+    //create request
     let request = await fetch(new Request(url, {
         method: "GET",
     }));
+
+    //if failed then return to avoid infinite async
+    //after displaying error to user
     if (!request.ok) {
+        setPlaceHolder(response.status);
         return;
     }
 
+    //once response returned, do callback function
     await request.json().then(response => {
-        response = response.response;
-        return getLyrics(response.hits[0].result.api_path);
+        _callback(response);
     });
 }
 
-function onClick() {    
-    (getSongURL(document.getElementById("song").value));
-    alert(document.getElementById("song").value);
+//disable multiple clicks
+let clicked = false;
+function onClick() {
+    //if no/small input output and return
+    if (document.getElementById("song").value.length < 4) {
+        setPlaceHolder("Title must have more than 3 characters!");
+        return;
+    }
+
+    //toggle clicked status
+    if (clicked) return;
+    clicked = true;
+
+    //set bar to loading to signal to user
+    const song = document.getElementById("song").value;
+    document.getElementById("song").value = "Loading...";
+    document.getElementById('song').readOnly = true;
+
+    //get song url w function to redirect to song as callback
+    getSongDetails(song, (response) => {
+        //log response (debug)
+        console.log(response);
+
+        //reset input (for when user clicks back button)
+        document.getElementById("song").value = song;
+        document.getElementById('song').readOnly = false;
+        clicked = false;
+
+        //if no response value output to user and end
+        if (!response.title) {
+            setPlaceHolder();
+            return;
+        }
+
+        //add song subdirectory to url, then add track query w/ song and artist
+        //finally set current href to url
+        let url = new URL(window.location.href + "song/lyrics.html");
+        url.searchParams.append("track", response.title);
+        url.searchParams.append("artist", response.artist);
+        window.location.href = url;
+    });
+}
+
+function inputPress(ev) {
+    //detect if enter pressed while in input,
+    //if so then replicate click
+    if (ev.key == "Enter") {
+        onClick();
+    }
 }

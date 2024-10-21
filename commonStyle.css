@@ -1,0 +1,101 @@
+@font-face {
+  font-family: lacosta;
+  src: url(assets/font/lacosta.otf);
+}
+@font-face {
+  font-family: allema;
+  src: url(assets/font/allema.ttf);
+}
+
+footer {
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+
+  width: 100%;
+  bottom: 5vh;
+}
+.footerText {
+  font: normal 1vw Arial, sans-serif;
+  
+  /*position*/
+  position: absolute;
+  left: 1vw;
+}
+.footerLicense {
+  font: normal 1vw Arial, sans-serif;
+  
+  /*position*/
+  right: 1vw;
+  position: absolute;
+
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  margin: 0px;
+  padding: 0px;
+  
+  position: fixed;
+
+  width: 100%;
+  top: 0px;
+  height: 2.25vw;
+
+  background-color: #05204b;
+  border: 2px solid #05204bd1;
+
+  z-index: 1;
+  overflow: hidden;
+}
+
+.button {
+  color: #ffffff;
+  margin: 0px;
+  padding: 0px;
+
+  font: normal 1.5vw allema;
+  position: fixed;
+
+  text-decoration: none;
+  
+  top: 0.5vh;
+  
+  transition: all 0.4s ease 0s;
+}
+.button:hover {
+  color: #ffffffd1;
+}
+
+.mmButton {
+  color: #ffffff;
+  margin: 0px;
+  padding: 0px;
+
+  font: normal 1.5vw lacosta;
+  position: fixed;
+
+  top: 0vh;
+  left: 30%;
+
+  padding-right: 2.5vw;
+  border-right: .2vw solid #ffffff;
+  border-right-style: dashed;
+}
+.homeButton { 
+  /*position*/
+  left: 44%;
+}
+.aboutButton {
+  left: 50%;
+}
+.helpButton {
+  left: 56.5%;
+}
+.canvasButton {
+  left: 62.5%;
+}
