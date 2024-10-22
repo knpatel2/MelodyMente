@@ -12,7 +12,7 @@ function setPlaceHolder(status = "No song found!") {
     }, 2000);
 }
 
-async function getSongDetails(songName, _callback) {
+/*async function getSongDetails(songName, _callback) {
     //add song name at end of lyrist request,
     //uri encoding for compatibility
     //(eg space => %20)
@@ -34,7 +34,7 @@ async function getSongDetails(songName, _callback) {
     await request.json().then(response => {
         _callback(response);
     });
-}
+}*/
 
 //disable multiple clicks
 let clicked = false;
@@ -54,29 +54,10 @@ function onClick() {
     document.getElementById("song").value = "Loading...";
     document.getElementById('song').readOnly = true;
 
-    //get song url w function to redirect to song as callback
-    getSongDetails(song, (response) => {
-        //log response (debug)
-        console.log(response);
-
-        //reset input (for when user clicks back button)
-        document.getElementById("song").value = song;
-        document.getElementById('song').readOnly = false;
-        clicked = false;
-
-        //if no response value output to user and end
-        if (!response.title) {
-            setPlaceHolder();
-            return;
-        }
-
-        //add song subdirectory to url, then add track query w/ song and artist
-        //finally set current href to url
-        let url = new URL(window.location.href + "song/lyrics.html");
-        url.searchParams.append("track", response.title);
-        url.searchParams.append("artist", response.artist);
-        window.location.href = url;
-    });
+    //load new webpage with direct input (previously requested song to safecheck)
+    let url = new URL(window.location.href + "song/lyrics.html");
+    url.searchParams.append("track", song);
+    window.location.href = url;
 }
 
 function inputPress(ev) {

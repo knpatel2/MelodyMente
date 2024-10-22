@@ -1,0 +1,41 @@
+body {
+}
+
+.songHeading {
+    margin: 10vh 0 0 10.75vw;
+}
+#songImage {
+    position: absolute;
+
+    width: 17.5%;
+    border: .25vw solid #05204bd1;
+
+    padding: .5vw;
+}
+
+.songTexts {
+    margin-left: 24vw;
+}
+#songText {
+    margin-bottom: 1vh;
+    font: normal 3vw lacosta;
+    color: #05204b;
+}
+.songSubText {
+    margin: -.7vh 0px 0px 1vw;
+
+    font: normal 2vw allema;
+    color: #05204b;
+}
+
+.lyricsBox {
+    display: absolute;
+
+    margin: 25vh 10vw;
+}
+#lyrics {
+    width: 100%;
+
+    font: normal 1.5vw "Times New Roman";
+    color: #05204b;
+}
